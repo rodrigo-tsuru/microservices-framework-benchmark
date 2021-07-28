@@ -39,6 +39,6 @@ public class ServerVerticle extends AbstractVerticle {
     vertx
         .createHttpServer()
         .requestHandler(req -> req.response().end(TEXT))
-        .listen(config().getInteger("http.port", defaultPort));
+        .listen(8080);
   }
 }

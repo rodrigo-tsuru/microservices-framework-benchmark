@@ -2,6 +2,8 @@ package com.github.thinhda;
 
 import com.github.thinhda.verticles.ServerVerticle;
 import io.vertx.core.Vertx;
+import io.vertx.core.DeploymentOptions;
+import io.vertx.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +26,9 @@ import javax.annotation.PostConstruct;
 @ComponentScan(basePackages = {"com.github.thinhda"})
 public class VertxSpringApplication {
 
-  @Autowired private ServerVerticle serverVerticle;
+  private static final int INSTANCES = Runtime.getRuntime().availableProcessors() * 2;
+
+  //@Autowired private ServerVerticle serverVerticle;
 
   public static void main(String[] args) {
     SpringApplication.run(VertxSpringApplication.class, args);
@@ -32,7 +36,8 @@ public class VertxSpringApplication {
 
   @PostConstruct
   public void deployVerticle() {
-    final Vertx vertx = Vertx.vertx();
-    vertx.deployVerticle(serverVerticle);
+    DeploymentOptions options = new DeploymentOptions().setInstances(INSTANCES);
+    Vertx.vertx(new VertxOptions().setPreferNativeTransport(true))
+    .deployVerticle(ServerVerticle.class.getName(),options);
   }
 }
