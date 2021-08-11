@@ -8,7 +8,7 @@
     <artifactId>spring-vertx</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <vertx.version>3.5.4</vertx.version>
+        <vertx.version>4.1.2</vertx.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <jackson.version>2.11.2</jackson.version>
     </properties>
@@ -55,6 +55,16 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-redis-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-config</artifactId>
+            <version>${vertx.version}</version>
         </dependency>
     </dependencies>
 
