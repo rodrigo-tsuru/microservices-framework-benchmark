@@ -12,6 +12,7 @@ import io.vertx.mutiny.core.Vertx;
 public class MyApp {
 
     void init(@Observes StartupEvent ev, Vertx vertx, Instance<MyVerticle> verticles) {
+        System.out.println("init!");
         vertx.deployVerticle(verticles::get, new DeploymentOptions().setInstances(32)).await().indefinitely();
     }
 }
