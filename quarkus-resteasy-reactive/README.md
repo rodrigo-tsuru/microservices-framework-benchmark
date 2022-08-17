@@ -54,4 +54,21 @@ If you want to learn more about building native executables, please consult http
 # Performance Test
 ```
 wrk -t4 -c128 -d30s "http://localhost:8080/" -s pipeline.lua --latency -- /vertx/hello 16
+
 ```
+
+# Performance Results
+
+Running 30s test @ http://localhost:8080/
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.00ms    9.76ms 265.60ms   91.85%
+    Req/Sec    73.93k    22.21k  169.21k    79.50%
+  Latency Distribution   
+     50%    4.42ms
+     75%    8.41ms
+     90%   15.08ms
+     99%   41.20ms
+  8832944 requests in 30.05s, 766.56MB read
+Requests/sec: 293905.51
+Transfer/sec:     25.51MB

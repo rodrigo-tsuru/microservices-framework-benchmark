@@ -1,4 +1,4 @@
-package org.acme.http;
+package org.acme.verticle;
 
 import javax.enterprise.context.Dependent;
 

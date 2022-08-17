@@ -25,7 +25,6 @@ public class CamelRoute extends EndpointRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from(platformHttp("/camel/hello")).setBody().simple("Hello World")
-                .to(log("hi").showExchangePattern(false).showBodyType(false));
+        from(platformHttp("/camel/hello")).setBody().simple("Hello World!");
     }
 }

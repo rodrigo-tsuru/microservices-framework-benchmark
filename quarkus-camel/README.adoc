@@ -114,3 +114,22 @@ public class ExampleResource {
 == Feedback
 
 Please report bugs and propose improvements via https://github.com/apache/camel-quarkus/issues[GitHub issues of Camel Quarkus] project.
+
+# Performance Test:
+```
+wrk -t4 -c128 -d30s "http://localhost:8080/" -s pipeline.lua --latency -- /camel/hello 16
+```
+# Performance Results:
+Running 30s test @ http://localhost:8080/
+  4 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    82.76ms  134.82ms   1.41s    94.93%
+    Req/Sec     5.89k     2.37k   11.28k    67.03%
+  Latency Distribution
+     50%   50.58ms
+     75%   85.44ms
+     90%  138.37ms
+     99%  875.47ms
+  692514 requests in 30.05s, 45.57MB read
+Requests/sec:  23043.12
+Transfer/sec:      1.52MB
